@@ -1,38 +1,27 @@
 package jm.task.core.jdbc.util;
 
-
-
-
-import jm.task.core.jdbc.Main;
 import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
+
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
-import org.hibernate.metamodel.MetadataSources;
 import org.hibernate.service.ServiceRegistry;
 
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 public class Util{
-    private static final String HOST = "jdbc:mysql://localhost:3306/mydbtest";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
     private static SessionFactory sessionFactory;
+    private static Connection connection;
 
-    Statement statement = null;
-    Connection connection = null;
-    public Connection getConnection() {
+
+    public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(HOST, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest", "root", "root");
             System.out.println("Connection OK");
-            statement = connection.createStatement();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("Connection ERROR");

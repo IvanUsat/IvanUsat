@@ -1,9 +1,14 @@
 package jm.task.core.jdbc.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@EqualsAndHashCode
 @Entity
 @Table (name = "User")
+
 
 public class User {
     @Id

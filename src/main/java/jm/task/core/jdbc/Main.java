@@ -12,8 +12,8 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Util util = new Util();
-        util.getConnection();
+
+        Util.getConnection();
         Util.getSessionFactory();
 
 
